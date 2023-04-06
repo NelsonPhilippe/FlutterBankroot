@@ -48,6 +48,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
+
+  double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,12 +72,21 @@ class _HomePageState extends State<HomePage> {
                       )
                   )
               ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                height: 500,
+                width: 500,
+                child: Image.asset('resources/img/bg_home.png', fit: BoxFit.fill),
+              ),
               Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: deviceWidth(context) <= 600 ? CrossAxisAlignment.center : CrossAxisAlignment.start,
                   children: <Widget> [
                     Container(
-                      margin: const EdgeInsets.fromLTRB(200.0, 15.0, 15.0, 15.0),
+                      margin: deviceWidth(context) <= 600 ?
+                        const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0) :
+                          const EdgeInsets.fromLTRB(200.0, 15.0, 15.0, 15.0),
                       child:  SignButton(
                         text: 'Signing',
                         redirect: 'login',
@@ -81,7 +94,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(200.0, 15.0, 15.0, 15.0),
+                      margin: deviceWidth(context) <= 600 ?
+                        const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0) :
+                        const EdgeInsets.fromLTRB(200.0, 15.0, 15.0, 15.0),
                       child:  SignButton(
                         text: 'Signup',
                         redirect: 'signup',
@@ -90,13 +105,6 @@ class _HomePageState extends State<HomePage> {
                     ),
 
                   ]
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                height: 500,
-                width: 500,
-                child: Image.asset('resources/img/bg_home.png', fit: BoxFit.fill),
               )
             ]
         ),
