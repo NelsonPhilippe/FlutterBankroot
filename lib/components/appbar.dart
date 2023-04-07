@@ -24,7 +24,9 @@ class AppBarConnected {
             onPressed: () {
 
             },
-            child: Text('Test')
+            child: const Icon(
+              Icons.menu
+            )
         )
       ],
     );

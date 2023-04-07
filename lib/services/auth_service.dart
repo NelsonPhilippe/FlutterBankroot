@@ -31,6 +31,10 @@ class AuthService {
     isLogged = Storage.getString('access_token') == null;
   }
 
+  String? getToken() {
+    return isLogged ? Storage.getString('access_token') : null;
+  }
+
   static AuthService? getInstance() {
     return AuthService._instance;
   }

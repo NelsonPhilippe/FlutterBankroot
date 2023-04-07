@@ -6,7 +6,6 @@ import 'package:learning/components/loading_dialog.dart';
 import 'package:learning/http/user_http.dart';
 import 'package:http/http.dart' as http;
 import 'package:learning/services/auth_service.dart';
-import 'package:learning/storage.dart';
 import 'package:learning/views/user.dart';
 
 import '../extensions/hex_color.dart';

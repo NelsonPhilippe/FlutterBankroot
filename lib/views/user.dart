@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:learning/components/appbar.dart';
 import 'package:learning/extensions/hex_color.dart';
 
@@ -16,14 +17,38 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarConnected.appBar(),
-      body: SizedBox(
-        child: ClipPath(
-          clipper: GreenClipper(),
-          child: Container(
-            color: HexaColor.fromHex('2E2E2E'),
+      body: Stack(
+        children: [
+          Positioned(
+              top: 0,
+              width: context.width,
+              child: SizedBox(
+                height: 400,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(40),
+                        child: const Solde(),
+                      ),
+                      const Center(
+                        child: Solde(),
+                      )
+                    ],
+                )
+              )
           ),
-        ),
-      ),
+          SizedBox(
+            height: 400,
+            child: ClipPath(
+              clipper: GreenClipper(),
+              child: Container(
+                color: HexaColor.fromHex('2E2E2E'),
+              ),
+            ),
+          ),
+        ],
+      )
     );
   }
 }
@@ -31,9 +56,33 @@ class _UserPageState extends State<UserPage> {
 class Solde extends StatelessWidget {
   const Solde({super.key});
 
+  List<Widget> desktop() {
+    return [
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: HexaColor.fromHex('D9D9D9'),
+        ),
+        width: 100,
+        height: 50,
+        child: const Text('0', style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
+      ),
+      Container(
+        width: 70,
+        height: 50,
+        color: HexaColor.fromHex('071A2E'),
+        child: const Text('\$', style: TextStyle(color: Colors.white, fontSize: 30), textAlign: TextAlign.center),
+      )
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Row(
+      children: [
+        ...desktop()
+      ],
+    );
   }
 
 }
